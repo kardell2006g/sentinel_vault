@@ -10,7 +10,7 @@ param secret_id_ttl default 93600
 # Get all approle_auth_backend_roles
 allAABR = plan.find_resources("vault_approle_auth_backend_role")
 
-# Filter to EKS node groups with violations
+# Filter to approle_auth_backend_role with violations
 # Warnings will be printed for all violations since the last parameter is true
 violatingAABR = plan.filter_attribute_greater_than_value(allAABR,"secret_id_ttl", secret_id_ttl, true)
 
