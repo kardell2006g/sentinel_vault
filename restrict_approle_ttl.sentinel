@@ -1,0 +1,24 @@
+# This policy uses the Sentinel tfplan/v2 import to limit the 
+# duration of a secret_id_ttl
+
+# Import tfplan-functions.sentinel with alias "plan"
+import "tfplan-functions" as plan
+
+# Max duration in seconds of secret_id
+param secret_id_ttl default 93600
+
+# Get all approle_auth_backend_roles
+allAABR = plan.find_resources("vault_approle_auth_backend_role")
+
+# Filter to EKS node groups with violations
+# Warnings will be printed for all violations since the last parameter is true
+violatingAABR = plan.filter_attribute_greater_than_value(allAABR,"secret_id_ttl", secret_id_ttl, true)
+
+# Count violations
+violations = length(violatingAABR["messages"])
+
+# Control 1.2.3 - Restricts an approle ID (secret_id_ttl) to be 26H(93600s) or less.
+main = rule {
+  violations is 0
+}
+

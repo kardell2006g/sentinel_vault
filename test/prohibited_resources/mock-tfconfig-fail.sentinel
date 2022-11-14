@@ -1,0 +1,84 @@
+import "strings"
+
+providers = {
+	"vault": {
+		"alias":               "",
+		"config":              {},
+		"full_name":           "registry.terraform.io/hashicorp/vault",
+		"module_address":      "",
+		"name":                "vault",
+		"provider_config_key": "vault",
+		"version_constraint":  "~> 3.10.0",
+	},
+}
+
+resources = {
+	"vault_kv_secret.secret": {
+		"address": "vault_kv_secret.secret",
+		"config": {
+			"data_json": {
+				"constant_value": null,
+			},
+			"path": {
+				"references": [
+					"vault_mount.kvv1.path",
+					"vault_mount.kvv1",
+				],
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "secret",
+		"provider_config_key": "vault",
+		"provisioners":        [],
+		"type":                "vault_kv_secret",
+	},
+	"vault_mount.kvv1": {
+		"address": "vault_mount.kvv1",
+		"config": {
+			"description": {
+				"constant_value": "KV Version 1 secret engine mount",
+			},
+			"options": {
+				"constant_value": {
+					"version": "1",
+				},
+			},
+			"path": {
+				"constant_value": "kvv1",
+			},
+			"type": {
+				"constant_value": "kv",
+			},
+		},
+		"count":               {},
+		"depends_on":          [],
+		"for_each":            {},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "kvv1",
+		"provider_config_key": "vault",
+		"provisioners":        [],
+		"type":                "vault_mount",
+	},
+}
+
+provisioners = {}
+
+variables = {}
+
+outputs = {}
+
+module_calls = {}
+
+strip_index = func(addr) {
+	s = strings.split(addr, ".")
+	for s as i, v {
+		s[i] = strings.split(v, "[")[0]
+	}
+
+	return strings.join(s, ".")
+}
