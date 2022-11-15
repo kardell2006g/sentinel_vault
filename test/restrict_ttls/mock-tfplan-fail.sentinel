@@ -1,0 +1,694 @@
+terraform_version = "1.2.7"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"vault_aws_secret_backend.aws": {
+			"address":        "vault_aws_secret_backend.aws",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "aws",
+			"provider_name":  "registry.terraform.io/hashicorp/vault",
+			"tainted":        false,
+			"type":           "vault_aws_secret_backend",
+			"values": {
+				"access_key":                "REDACTED_SENSITIVE",
+				"default_lease_ttl_seconds": 40000,
+				"description":               null,
+				"disable_remount":           false,
+				"iam_endpoint":              null,
+				"max_lease_ttl_seconds":     900000,
+				"namespace":                 null,
+				"path":                      "aws",
+				"secret_key":                "REDACTED_SENSITIVE",
+				"sts_endpoint":              null,
+			},
+		},
+		"vault_aws_secret_backend_role.role": {
+			"address":        "vault_aws_secret_backend_role.role",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "role",
+			"provider_name":  "registry.terraform.io/hashicorp/vault",
+			"tainted":        false,
+			"type":           "vault_aws_secret_backend_role",
+			"values": {
+				"backend":                  "aws",
+				"credential_type":          "iam_user",
+				"iam_groups":               null,
+				"name":                     "deploy",
+				"namespace":                null,
+				"permissions_boundary_arn": null,
+				"policy_arns":              null,
+				"policy_document":          "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iam:*\",\r\n      \"Resource\": \"*\"\r\n    }\r\n  ]\r\n}\r\n",
+				"role_arns":                null,
+				"user_path":                null,
+			},
+		},
+		"vault_kubernetes_secret_backend.config": {
+			"address":        "vault_kubernetes_secret_backend.config",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "config",
+			"provider_name":  "registry.terraform.io/hashicorp/vault",
+			"tainted":        false,
+			"type":           "vault_kubernetes_secret_backend",
+			"values": {
+				"allowed_managed_keys":    null,
+				"description":             "kubernetes secrets engine description",
+				"disable_local_ca_jwt":    false,
+				"external_entropy_access": false,
+				"kubernetes_ca_cert":      "",
+				"kubernetes_host":         "https://127.0.0.1:61233",
+				"local":                   null,
+				"namespace":               null,
+				"options":                 null,
+				"path":                    "kubernetes",
+				"service_account_jwt":     "REDACTED_SENSITIVE",
+			},
+		},
+		"vault_kubernetes_secret_backend_role.sa-example": {
+			"address":        "vault_kubernetes_secret_backend_role.sa-example",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "sa-example",
+			"provider_name":  "registry.terraform.io/hashicorp/vault",
+			"tainted":        false,
+			"type":           "vault_kubernetes_secret_backend_role",
+			"values": {
+				"allowed_kubernetes_namespaces": [
+					"*",
+				],
+				"backend": "kubernetes",
+				"extra_annotations": {
+					"env":      "development",
+					"location": "earth",
+				},
+				"extra_labels": {
+					"id":   "abc123",
+					"name": "some_name",
+				},
+				"generated_role_rules": null,
+				"kubernetes_role_name": null,
+				"kubernetes_role_type": "Role",
+				"name":                 "service-account-name-role",
+				"name_template":        null,
+				"namespace":            null,
+				"service_account_name": "test-service-account-with-generated-token",
+				"token_default_ttl":    21600,
+				"token_max_ttl":        43200,
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"vault_aws_secret_backend.aws": {
+		"address": "vault_aws_secret_backend.aws",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"access_key":                "REDACTED_SENSITIVE",
+				"default_lease_ttl_seconds": 40000,
+				"description":               null,
+				"disable_remount":           false,
+				"iam_endpoint":              null,
+				"max_lease_ttl_seconds":     900000,
+				"namespace":                 null,
+				"path":                      "aws",
+				"secret_key":                "REDACTED_SENSITIVE",
+				"sts_endpoint":              null,
+			},
+			"after_unknown": {
+				"id":                true,
+				"region":            true,
+				"username_template": true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "aws",
+		"provider_name":  "registry.terraform.io/hashicorp/vault",
+		"type":           "vault_aws_secret_backend",
+	},
+	"vault_aws_secret_backend_role.role": {
+		"address": "vault_aws_secret_backend_role.role",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"backend":                  "aws",
+				"credential_type":          "iam_user",
+				"iam_groups":               null,
+				"name":                     "deploy",
+				"namespace":                null,
+				"permissions_boundary_arn": null,
+				"policy_arns":              null,
+				"policy_document":          "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iam:*\",\r\n      \"Resource\": \"*\"\r\n    }\r\n  ]\r\n}\r\n",
+				"role_arns":                null,
+				"user_path":                null,
+			},
+			"after_unknown": {
+				"default_sts_ttl": true,
+				"id":              true,
+				"max_sts_ttl":     true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "role",
+		"provider_name":  "registry.terraform.io/hashicorp/vault",
+		"type":           "vault_aws_secret_backend_role",
+	},
+	"vault_kubernetes_secret_backend.config": {
+		"address": "vault_kubernetes_secret_backend.config",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"allowed_managed_keys":    null,
+				"description":             "kubernetes secrets engine description",
+				"disable_local_ca_jwt":    false,
+				"external_entropy_access": false,
+				"kubernetes_ca_cert":      "",
+				"kubernetes_host":         "https://127.0.0.1:61233",
+				"local":                   null,
+				"namespace":               null,
+				"options":                 null,
+				"path":                    "kubernetes",
+				"service_account_jwt":     "REDACTED_SENSITIVE",
+			},
+			"after_unknown": {
+				"accessor":                     true,
+				"audit_non_hmac_request_keys":  true,
+				"audit_non_hmac_response_keys": true,
+				"default_lease_ttl_seconds":    true,
+				"id": true,
+				"max_lease_ttl_seconds": true,
+				"seal_wrap":             true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "config",
+		"provider_name":  "registry.terraform.io/hashicorp/vault",
+		"type":           "vault_kubernetes_secret_backend",
+	},
+	"vault_kubernetes_secret_backend_role.sa-example": {
+		"address": "vault_kubernetes_secret_backend_role.sa-example",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"allowed_kubernetes_namespaces": [
+					"*",
+				],
+				"backend": "kubernetes",
+				"extra_annotations": {
+					"env":      "development",
+					"location": "earth",
+				},
+				"extra_labels": {
+					"id":   "abc123",
+					"name": "some_name",
+				},
+				"generated_role_rules": null,
+				"kubernetes_role_name": null,
+				"kubernetes_role_type": "Role",
+				"name":                 "service-account-name-role",
+				"name_template":        null,
+				"namespace":            null,
+				"service_account_name": "test-service-account-with-generated-token",
+				"token_default_ttl":    21600,
+				"token_max_ttl":        43200,
+			},
+			"after_unknown": {
+				"allowed_kubernetes_namespaces": [
+					false,
+				],
+				"extra_annotations": {},
+				"extra_labels":      {},
+				"id":                true,
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "sa-example",
+		"provider_name":  "registry.terraform.io/hashicorp/vault",
+		"type":           "vault_kubernetes_secret_backend_role",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"vault": {
+				"full_name":          "registry.terraform.io/hashicorp/vault",
+				"name":               "vault",
+				"version_constraint": "~> 3.10.0",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "vault_aws_secret_backend.aws",
+					"expressions": {
+						"access_key": {
+							"constant_value": "VupmtPUpG5RG8tXjvSrFST2lVjs4AWGx7A17wvjI",
+						},
+						"default_lease_ttl_seconds": {
+							"constant_value": 40000,
+						},
+						"max_lease_ttl_seconds": {
+							"constant_value": 900000,
+						},
+						"secret_key": {
+							"constant_value": "AKIAYSAXDTM4OFKKBQVA",
+						},
+					},
+					"mode":                "managed",
+					"name":                "aws",
+					"provider_config_key": "vault",
+					"schema_version":      0,
+					"type":                "vault_aws_secret_backend",
+				},
+				{
+					"address": "vault_aws_secret_backend_role.role",
+					"expressions": {
+						"backend": {
+							"references": [
+								"vault_aws_secret_backend.aws.path",
+								"vault_aws_secret_backend.aws",
+							],
+						},
+						"credential_type": {
+							"constant_value": "iam_user",
+						},
+						"name": {
+							"constant_value": "deploy",
+						},
+						"policy_document": {
+							"constant_value": "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iam:*\",\r\n      \"Resource\": \"*\"\r\n    }\r\n  ]\r\n}\r\n",
+						},
+					},
+					"mode":                "managed",
+					"name":                "role",
+					"provider_config_key": "vault",
+					"schema_version":      0,
+					"type":                "vault_aws_secret_backend_role",
+				},
+				{
+					"address": "vault_kubernetes_secret_backend.config",
+					"expressions": {
+						"description": {
+							"constant_value": "kubernetes secrets engine description",
+						},
+						"disable_local_ca_jwt": {
+							"constant_value": false,
+						},
+						"kubernetes_ca_cert": {},
+						"kubernetes_host": {
+							"constant_value": "https://127.0.0.1:61233",
+						},
+						"path": {
+							"constant_value": "kubernetes",
+						},
+						"service_account_jwt": {},
+					},
+					"mode":                "managed",
+					"name":                "config",
+					"provider_config_key": "vault",
+					"schema_version":      0,
+					"type":                "vault_kubernetes_secret_backend",
+				},
+				{
+					"address": "vault_kubernetes_secret_backend_role.sa-example",
+					"expressions": {
+						"allowed_kubernetes_namespaces": {
+							"constant_value": [
+								"*",
+							],
+						},
+						"backend": {
+							"references": [
+								"vault_kubernetes_secret_backend.config.path",
+								"vault_kubernetes_secret_backend.config",
+							],
+						},
+						"extra_annotations": {
+							"constant_value": {
+								"env":      "development",
+								"location": "earth",
+							},
+						},
+						"extra_labels": {
+							"constant_value": {
+								"id":   "abc123",
+								"name": "some_name",
+							},
+						},
+						"name": {
+							"constant_value": "service-account-name-role",
+						},
+						"service_account_name": {
+							"constant_value": "test-service-account-with-generated-token",
+						},
+						"token_default_ttl": {
+							"constant_value": 21600,
+						},
+						"token_max_ttl": {
+							"constant_value": 43200,
+						},
+					},
+					"mode":                "managed",
+					"name":                "sa-example",
+					"provider_config_key": "vault",
+					"schema_version":      0,
+					"type":                "vault_kubernetes_secret_backend_role",
+				},
+			],
+		},
+	},
+	"format_version": "1.1",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":          "vault_aws_secret_backend.aws",
+					"mode":             "managed",
+					"name":             "aws",
+					"provider_name":    "registry.terraform.io/hashicorp/vault",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "vault_aws_secret_backend",
+					"values": {
+						"access_key":                "REDACTED_SENSITIVE",
+						"default_lease_ttl_seconds": 40000,
+						"description":               null,
+						"disable_remount":           false,
+						"iam_endpoint":              null,
+						"max_lease_ttl_seconds":     900000,
+						"namespace":                 null,
+						"path":                      "aws",
+						"secret_key":                "REDACTED_SENSITIVE",
+						"sts_endpoint":              null,
+					},
+				},
+				{
+					"address":          "vault_aws_secret_backend_role.role",
+					"mode":             "managed",
+					"name":             "role",
+					"provider_name":    "registry.terraform.io/hashicorp/vault",
+					"schema_version":   0,
+					"sensitive_values": {},
+					"type":             "vault_aws_secret_backend_role",
+					"values": {
+						"backend":                  "aws",
+						"credential_type":          "iam_user",
+						"iam_groups":               null,
+						"name":                     "deploy",
+						"namespace":                null,
+						"permissions_boundary_arn": null,
+						"policy_arns":              null,
+						"policy_document":          "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iam:*\",\r\n      \"Resource\": \"*\"\r\n    }\r\n  ]\r\n}\r\n",
+						"role_arns":                null,
+						"user_path":                null,
+					},
+				},
+				{
+					"address":        "vault_kubernetes_secret_backend.config",
+					"mode":           "managed",
+					"name":           "config",
+					"provider_name":  "registry.terraform.io/hashicorp/vault",
+					"schema_version": 0,
+					"sensitive_values": {
+						"audit_non_hmac_request_keys":  [],
+						"audit_non_hmac_response_keys": [],
+					},
+					"type": "vault_kubernetes_secret_backend",
+					"values": {
+						"allowed_managed_keys":    null,
+						"description":             "kubernetes secrets engine description",
+						"disable_local_ca_jwt":    false,
+						"external_entropy_access": false,
+						"kubernetes_ca_cert":      "",
+						"kubernetes_host":         "https://127.0.0.1:61233",
+						"local":                   null,
+						"namespace":               null,
+						"options":                 null,
+						"path":                    "kubernetes",
+						"service_account_jwt":     "REDACTED_SENSITIVE",
+					},
+				},
+				{
+					"address":        "vault_kubernetes_secret_backend_role.sa-example",
+					"mode":           "managed",
+					"name":           "sa-example",
+					"provider_name":  "registry.terraform.io/hashicorp/vault",
+					"schema_version": 0,
+					"sensitive_values": {
+						"allowed_kubernetes_namespaces": [
+							false,
+						],
+						"extra_annotations": {},
+						"extra_labels":      {},
+					},
+					"type": "vault_kubernetes_secret_backend_role",
+					"values": {
+						"allowed_kubernetes_namespaces": [
+							"*",
+						],
+						"backend": "kubernetes",
+						"extra_annotations": {
+							"env":      "development",
+							"location": "earth",
+						},
+						"extra_labels": {
+							"id":   "abc123",
+							"name": "some_name",
+						},
+						"generated_role_rules": null,
+						"kubernetes_role_name": null,
+						"kubernetes_role_type": "Role",
+						"name":                 "service-account-name-role",
+						"name_template":        null,
+						"namespace":            null,
+						"service_account_name": "test-service-account-with-generated-token",
+						"token_default_ttl":    21600,
+						"token_max_ttl":        43200,
+					},
+				},
+			],
+		},
+	},
+	"relevant_attributes": [
+		{
+			"attribute": [
+				"path",
+			],
+			"resource": "vault_kubernetes_secret_backend.config",
+		},
+		{
+			"attribute": [
+				"path",
+			],
+			"resource": "vault_aws_secret_backend.aws",
+		},
+	],
+	"resource_changes": [
+		{
+			"address": "vault_aws_secret_backend.aws",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"access_key":                "REDACTED_SENSITIVE",
+					"default_lease_ttl_seconds": 40000,
+					"description":               null,
+					"disable_remount":           false,
+					"iam_endpoint":              null,
+					"max_lease_ttl_seconds":     900000,
+					"namespace":                 null,
+					"path":                      "aws",
+					"secret_key":                "REDACTED_SENSITIVE",
+					"sts_endpoint":              null,
+				},
+				"after_sensitive": {
+					"access_key": true,
+					"secret_key": true,
+				},
+				"after_unknown": {
+					"id":                true,
+					"region":            true,
+					"username_template": true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "aws",
+			"provider_name": "registry.terraform.io/hashicorp/vault",
+			"type":          "vault_aws_secret_backend",
+		},
+		{
+			"address": "vault_aws_secret_backend_role.role",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"backend":                  "aws",
+					"credential_type":          "iam_user",
+					"iam_groups":               null,
+					"name":                     "deploy",
+					"namespace":                null,
+					"permissions_boundary_arn": null,
+					"policy_arns":              null,
+					"policy_document":          "{\r\n  \"Version\": \"2012-10-17\",\r\n  \"Statement\": [\r\n    {\r\n      \"Effect\": \"Allow\",\r\n      \"Action\": \"iam:*\",\r\n      \"Resource\": \"*\"\r\n    }\r\n  ]\r\n}\r\n",
+					"role_arns":                null,
+					"user_path":                null,
+				},
+				"after_sensitive": {},
+				"after_unknown": {
+					"default_sts_ttl": true,
+					"id":              true,
+					"max_sts_ttl":     true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "role",
+			"provider_name": "registry.terraform.io/hashicorp/vault",
+			"type":          "vault_aws_secret_backend_role",
+		},
+		{
+			"address": "vault_kubernetes_secret_backend.config",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"allowed_managed_keys":    null,
+					"description":             "kubernetes secrets engine description",
+					"disable_local_ca_jwt":    false,
+					"external_entropy_access": false,
+					"kubernetes_ca_cert":      "",
+					"kubernetes_host":         "https://127.0.0.1:61233",
+					"local":                   null,
+					"namespace":               null,
+					"options":                 null,
+					"path":                    "kubernetes",
+					"service_account_jwt":     "REDACTED_SENSITIVE",
+				},
+				"after_sensitive": {
+					"audit_non_hmac_request_keys":  [],
+					"audit_non_hmac_response_keys": [],
+					"service_account_jwt":          true,
+				},
+				"after_unknown": {
+					"accessor":                     true,
+					"audit_non_hmac_request_keys":  true,
+					"audit_non_hmac_response_keys": true,
+					"default_lease_ttl_seconds":    true,
+					"id": true,
+					"max_lease_ttl_seconds": true,
+					"seal_wrap":             true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "config",
+			"provider_name": "registry.terraform.io/hashicorp/vault",
+			"type":          "vault_kubernetes_secret_backend",
+		},
+		{
+			"address": "vault_kubernetes_secret_backend_role.sa-example",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"allowed_kubernetes_namespaces": [
+						"*",
+					],
+					"backend": "kubernetes",
+					"extra_annotations": {
+						"env":      "development",
+						"location": "earth",
+					},
+					"extra_labels": {
+						"id":   "abc123",
+						"name": "some_name",
+					},
+					"generated_role_rules": null,
+					"kubernetes_role_name": null,
+					"kubernetes_role_type": "Role",
+					"name":                 "service-account-name-role",
+					"name_template":        null,
+					"namespace":            null,
+					"service_account_name": "test-service-account-with-generated-token",
+					"token_default_ttl":    21600,
+					"token_max_ttl":        43200,
+				},
+				"after_sensitive": {
+					"allowed_kubernetes_namespaces": [
+						false,
+					],
+					"extra_annotations": {},
+					"extra_labels":      {},
+				},
+				"after_unknown": {
+					"allowed_kubernetes_namespaces": [
+						false,
+					],
+					"extra_annotations": {},
+					"extra_labels":      {},
+					"id":                true,
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "sa-example",
+			"provider_name": "registry.terraform.io/hashicorp/vault",
+			"type":          "vault_kubernetes_secret_backend_role",
+		},
+	],
+	"terraform_version": "1.2.7",
+}

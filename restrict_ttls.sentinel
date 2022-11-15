@@ -1,0 +1,40 @@
+# This policy uses the Sentinel tfplan/v2 import to limit the 
+# duration of a default_lease_ttl_seconds and max_lease_ttl_seconds
+
+# Import tfplan-functions.sentinel with alias "plan"
+import "tfplan-functions" as plan
+import "tfplan/v2" as tfplan
+
+# Max duration in seconds of TTLs
+param token_default_ttl default 3600
+param token_max_ttl default 7776000
+
+# Get all approle_auth_backend_roles
+#allRoles = plan.find_resources("vault_kubernetes_secret_backend_role") and plan.find_resources("vault_aws_secret_backend_role")
+
+allRoles = filter tfplan.resource_changes as _, resource_changes {
+    resource_changes.mode is "managed" and
+        resource_changes.type is "vault_kubernetes_secret_backend" or
+         resource_changes.type is "vault_aws_secret_backend" and
+            (resource_changes.change.actions contains "create" or
+            resource_changes.change.actions is ["update"] or
+            (resource_changes.change.actions is ["no-op"] and
+                resource_changes.change.after is not null))
+}
+
+
+
+#print(allRoles)
+# Filter to Roles with violating TTLS
+# Warnings will be printed for all violations since the last parameter is true
+violatingMin = plan.filter_attribute_less_than_value(allRoles,"default_lease_ttl_seconds", token_default_ttl, true)
+violatingMax = plan.filter_attribute_greater_than_value(allRoles,"max_lease_ttl_seconds", token_max_ttl, true)
+
+# Count violations
+violations = length(violatingMin["messages"]) + length(violatingMax["messages"])
+
+# Control 1.2.3 - Restricts default_lease_ttl_seconds and max_lease_ttl_seconds
+main = rule {
+  violations is 0
+}
+

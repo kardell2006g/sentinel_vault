@@ -1,0 +1,121 @@
+terraform_version = "1.2.7"
+
+planned_values = {
+	"outputs":   {},
+	"resources": {},
+}
+
+variables = {}
+
+resource_changes = {
+	"vault_namespace.parent": {
+		"address": "vault_namespace.parent",
+		"change": {
+			"actions": [
+				"delete",
+			],
+			"after":         null,
+			"after_unknown": {},
+			"before": {
+				"id":           "admin/parent/",
+				"namespace":    null,
+				"namespace_id": "aXEfW",
+				"path":         "parent",
+				"path_fq":      "parent",
+			},
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "parent",
+		"provider_name":  "registry.terraform.io/hashicorp/vault",
+		"type":           "vault_namespace",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"vault": {
+				"full_name":          "registry.terraform.io/hashicorp/vault",
+				"name":               "vault",
+				"version_constraint": "~> 3.10.0",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "vault_namespace.parent",
+					"expressions": {
+						"path": {
+							"constant_value": "parent",
+						},
+					},
+					"mode":                "managed",
+					"name":                "parent",
+					"provider_config_key": "vault",
+					"schema_version":      0,
+					"type":                "vault_namespace",
+				},
+			],
+		},
+	},
+	"format_version": "1.1",
+	"planned_values": {
+		"root_module": {},
+	},
+	"prior_state": {
+		"format_version":    "1.0",
+		"terraform_version": "1.2.7",
+		"values": {
+			"root_module": {
+				"resources": [
+					{
+						"address":          "vault_namespace.parent",
+						"mode":             "managed",
+						"name":             "parent",
+						"provider_name":    "registry.terraform.io/hashicorp/vault",
+						"schema_version":   0,
+						"sensitive_values": {},
+						"type":             "vault_namespace",
+						"values": {
+							"id":           "admin/parent/",
+							"namespace":    null,
+							"namespace_id": "aXEfW",
+							"path":         "parent",
+							"path_fq":      "parent",
+						},
+					},
+				],
+			},
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "vault_namespace.parent",
+			"change": {
+				"actions": [
+					"delete",
+				],
+				"after_sensitive": false,
+				"after_unknown":   {},
+				"before": {
+					"id":           "admin/parent/",
+					"namespace":    null,
+					"namespace_id": "aXEfW",
+					"path":         "parent",
+					"path_fq":      "parent",
+				},
+				"before_sensitive": {},
+			},
+			"mode":          "managed",
+			"name":          "parent",
+			"provider_name": "registry.terraform.io/hashicorp/vault",
+			"type":          "vault_namespace",
+		},
+	],
+	"terraform_version": "1.2.7",
+}
