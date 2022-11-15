@@ -6,7 +6,7 @@
 import "tfconfig-functions" as config
 
 # List of prohibited resources
-prohibited_list = ["vault_kv_secret"]
+prohibited_list = ["vault_kv_secret","vault_generic_secret","vault_generic_endpoint"]
 
 # Get all Resources
 allResources = config.find_all_resources()
