@@ -6,9 +6,10 @@ import "tfplan-functions" as plan
 
 # Allowed Vault Auth Methods
 allowed_methods = [
-  "aws",
-  "kubernetes",
-  "approle",
+	"aws",
+	"kubernetes",
+	"approle",
+	"oidc",
 ]
 
 # Get all Vault auth methods
@@ -17,12 +18,12 @@ allVaultAuthMethods = plan.find_resources("vault_auth_backend")
 # Filter to Vault auth methods with violations
 # Prints warnings for all violations since last parameter is true
 violatingVaultAuthMethods = plan.filter_attribute_not_in_list(allVaultAuthMethods,
-                            "type", allowed_methods, true)
+	"type", allowed_methods, true)
 
 # Count violations
 violations = length(violatingVaultAuthMethods["messages"])
 
-# Main rule
+# Control 1 - restrict backend types
 main = rule {
-  violations is 0
+	violations is 0
 }

@@ -6,7 +6,7 @@
 import "tfconfig-functions" as config
 
 # List of prohibited resources
-prohibited_list = ["vault_kv_secret","vault_generic_secret","vault_generic_endpoint"]
+prohibited_list = ["vault_kv_secret", "vault_generic_secret", "vault_generic_endpoint"]
 
 # Get all Resources
 allResources = config.find_all_resources()
@@ -14,9 +14,9 @@ allResources = config.find_all_resources()
 # Filter to resources with violations
 # Warnings will be printed for all violations since the last parameter is true
 violatingResources = config.filter_attribute_in_list(allResources,
-                     "type", prohibited_list, true)
+	"type", prohibited_list, true)
 
-# Main rule
+# Control 2 - Prohobited resources
 main = rule {
- length(violatingResources["messages"]) is 0
+	length(violatingResources["messages"]) is 0
 }

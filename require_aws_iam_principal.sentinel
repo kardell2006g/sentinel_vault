@@ -1,0 +1,24 @@
+# This policy uses the Sentinel tfplan/v2 import to require
+# bound_iam_principal_arn can't be null
+
+# Import tfplan-functions.sentinel with alias "plan"
+import "tfplan-functions" as plan
+
+# Get all approle_auth_backend_roles and filter on auth_type
+allAABR = plan.find_resources("vault_aws_auth_backend_role")
+validateIAM = all allAABR as _, roles {
+	roles.change.after.auth_type is "iam"
+}
+
+# if auth_role type is iam check that is contains a value for bound_iam_principal_arns
+validatePrincipal = true
+if validateIAM {
+	validatePrincipal = all allAABR as _, principal {
+		principal.change.after.bound_iam_principal_arns is not null
+	}
+}
+
+# Control 10 - Require bound_iam_principal_arn not be null on iam Role
+main = rule {
+	validatePrincipal is true
+}

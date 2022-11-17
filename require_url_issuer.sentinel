@@ -1,0 +1,24 @@
+# This policy uses the Sentinel tfplan/v2 import to require
+# makes sure there is either a jwks_url or oidc_discovery_url and
+# bound_issuer set to specific values
+
+# Import tfplan-functions.sentinel with alias "plan"
+import "tfplan-functions" as plan
+
+# Get all Vault auth methods and check if the path is defined
+jwks_url = ""
+bound_issuer = ""
+oidc_discovery_url = ""
+allAAB = plan.find_resources("vault_jwt_auth_backend")
+for allAAB as _, jwt {
+	oidc_discovery_url = jwt.change.after.oidc_discovery_url else "undefined"
+	bound_issuer = jwt.change.after.bound_issuer else "undefined"
+	jwks_url = jwt.change.after.jwks_url else "undefined"
+}
+
+# Control 8 - Require jwks_url or oidc_discovery_url and
+# bound_issuer be spefific values
+main = rule {
+	jwks_url is "https://myco.auth0.com/" and bound_issuer is "https://myco.auth0.com/" or
+	oidc_discovery_url is "https://myco.auth0.com/" and bound_issuer is "https://myco.auth0.com/"
+}
