@@ -20,8 +20,8 @@ terraform {
 provider "vault" {}
 
 resource "vault_aws_secret_backend" "aws" {
-  access_key = "V1"
-  secret_key = "AK1A"
+  access_key = "VupmtPUpG5RG8tXjvSrFST2lVjs4AWGx7A17wvjI"
+  secret_key = "AKIAYSAXDTM4OFKKBQVA"
   default_lease_ttl_seconds = 40000
   max_lease_ttl_seconds = 900000
 }

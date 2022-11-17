@@ -3,7 +3,7 @@ terraform {
     organization = "gekk0"
 
     workspaces {
-      name = "vault_test9"
+      name = "vault_test8"
     }
   }
 }
@@ -22,8 +22,8 @@ provider "vault" {}
 resource "vault_jwt_auth_backend" "oidc" {
   path = "oidc"
   default_role = "test-role"
-  oidc_discovery_url    = "https://myco.auth0.com/"
-  bound_issuer          = "https://myco.auth0.com/"
+  jwks_url    = "https://adamwashere.com"
+  bound_issuer          = "https://adamwashere.com/"
 }
 
 resource "vault_jwt_auth_backend_role" "example" {

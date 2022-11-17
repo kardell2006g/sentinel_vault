@@ -23,6 +23,7 @@ provider "vault" {}
 
 resource "vault_auth_backend" "example1" {
   type = "approle"
+  path = "aws"
 
   tune {
     max_lease_ttl      = "90000s"
