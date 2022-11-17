@@ -1,0 +1,642 @@
+terraform_version = "1.2.7"
+
+planned_values = {
+	"outputs": {},
+	"resources": {
+		"vault_auth_backend.example1": {
+			"address":        "vault_auth_backend.example1",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example1",
+			"provider_name":  "registry.terraform.io/hashicorp/vault",
+			"tainted":        false,
+			"type":           "vault_auth_backend",
+			"values": {
+				"description":     null,
+				"disable_remount": false,
+				"local":           null,
+				"namespace":       null,
+				"path":            "aws",
+				"tune": [
+					{
+						"allowed_response_headers":     [],
+						"audit_non_hmac_request_keys":  [],
+						"audit_non_hmac_response_keys": [],
+						"default_lease_ttl":            "",
+						"listing_visibility":           "unauth",
+						"max_lease_ttl":                "90000s",
+						"passthrough_request_headers":  [],
+						"token_type":                   "",
+					},
+				],
+				"type": "approle",
+			},
+		},
+		"vault_auth_backend.example2": {
+			"address":        "vault_auth_backend.example2",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example2",
+			"provider_name":  "registry.terraform.io/hashicorp/vault",
+			"tainted":        false,
+			"type":           "vault_auth_backend",
+			"values": {
+				"description":     null,
+				"disable_remount": false,
+				"local":           null,
+				"namespace":       null,
+				"tune": [
+					{
+						"allowed_response_headers":     [],
+						"audit_non_hmac_request_keys":  [],
+						"audit_non_hmac_response_keys": [],
+						"default_lease_ttl":            "",
+						"listing_visibility":           "unauth",
+						"max_lease_ttl":                "90000s",
+						"passthrough_request_headers":  [],
+						"token_type":                   "",
+					},
+				],
+				"type": "azure",
+			},
+		},
+		"vault_auth_backend.example3": {
+			"address":        "vault_auth_backend.example3",
+			"depends_on":     [],
+			"deposed_key":    "",
+			"index":          null,
+			"mode":           "managed",
+			"module_address": "",
+			"name":           "example3",
+			"provider_name":  "registry.terraform.io/hashicorp/vault",
+			"tainted":        false,
+			"type":           "vault_auth_backend",
+			"values": {
+				"description":     null,
+				"disable_remount": false,
+				"local":           null,
+				"namespace":       null,
+				"tune": [
+					{
+						"allowed_response_headers":     [],
+						"audit_non_hmac_request_keys":  [],
+						"audit_non_hmac_response_keys": [],
+						"default_lease_ttl":            "",
+						"listing_visibility":           "unauth",
+						"max_lease_ttl":                "90000s",
+						"passthrough_request_headers":  [],
+						"token_type":                   "",
+					},
+				],
+				"type": "kubernetes",
+			},
+		},
+	},
+}
+
+variables = {}
+
+resource_changes = {
+	"vault_auth_backend.example1": {
+		"address": "vault_auth_backend.example1",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description":     null,
+				"disable_remount": false,
+				"local":           null,
+				"namespace":       null,
+				"path":            "aws",
+				"tune": [
+					{
+						"allowed_response_headers":     [],
+						"audit_non_hmac_request_keys":  [],
+						"audit_non_hmac_response_keys": [],
+						"default_lease_ttl":            "",
+						"listing_visibility":           "unauth",
+						"max_lease_ttl":                "90000s",
+						"passthrough_request_headers":  [],
+						"token_type":                   "",
+					},
+				],
+				"type": "approle",
+			},
+			"after_unknown": {
+				"accessor": true,
+				"id":       true,
+				"tune": [
+					{
+						"allowed_response_headers":     [],
+						"audit_non_hmac_request_keys":  [],
+						"audit_non_hmac_response_keys": [],
+						"passthrough_request_headers":  [],
+					},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example1",
+		"provider_name":  "registry.terraform.io/hashicorp/vault",
+		"type":           "vault_auth_backend",
+	},
+	"vault_auth_backend.example2": {
+		"address": "vault_auth_backend.example2",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description":     null,
+				"disable_remount": false,
+				"local":           null,
+				"namespace":       null,
+				"tune": [
+					{
+						"allowed_response_headers":     [],
+						"audit_non_hmac_request_keys":  [],
+						"audit_non_hmac_response_keys": [],
+						"default_lease_ttl":            "",
+						"listing_visibility":           "unauth",
+						"max_lease_ttl":                "90000s",
+						"passthrough_request_headers":  [],
+						"token_type":                   "",
+					},
+				],
+				"type": "azure",
+			},
+			"after_unknown": {
+				"accessor": true,
+				"id":       true,
+				"path":     true,
+				"tune": [
+					{
+						"allowed_response_headers":     [],
+						"audit_non_hmac_request_keys":  [],
+						"audit_non_hmac_response_keys": [],
+						"passthrough_request_headers":  [],
+					},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example2",
+		"provider_name":  "registry.terraform.io/hashicorp/vault",
+		"type":           "vault_auth_backend",
+	},
+	"vault_auth_backend.example3": {
+		"address": "vault_auth_backend.example3",
+		"change": {
+			"actions": [
+				"create",
+			],
+			"after": {
+				"description":     null,
+				"disable_remount": false,
+				"local":           null,
+				"namespace":       null,
+				"tune": [
+					{
+						"allowed_response_headers":     [],
+						"audit_non_hmac_request_keys":  [],
+						"audit_non_hmac_response_keys": [],
+						"default_lease_ttl":            "",
+						"listing_visibility":           "unauth",
+						"max_lease_ttl":                "90000s",
+						"passthrough_request_headers":  [],
+						"token_type":                   "",
+					},
+				],
+				"type": "kubernetes",
+			},
+			"after_unknown": {
+				"accessor": true,
+				"id":       true,
+				"path":     true,
+				"tune": [
+					{
+						"allowed_response_headers":     [],
+						"audit_non_hmac_request_keys":  [],
+						"audit_non_hmac_response_keys": [],
+						"passthrough_request_headers":  [],
+					},
+				],
+			},
+			"before": null,
+		},
+		"deposed":        "",
+		"index":          null,
+		"mode":           "managed",
+		"module_address": "",
+		"name":           "example3",
+		"provider_name":  "registry.terraform.io/hashicorp/vault",
+		"type":           "vault_auth_backend",
+	},
+}
+
+output_changes = {}
+
+raw = {
+	"configuration": {
+		"provider_config": {
+			"vault": {
+				"full_name":          "registry.terraform.io/hashicorp/vault",
+				"name":               "vault",
+				"version_constraint": "~> 3.10.0",
+			},
+		},
+		"root_module": {
+			"resources": [
+				{
+					"address": "vault_auth_backend.example1",
+					"expressions": {
+						"path": {
+							"constant_value": "aws",
+						},
+						"tune": {
+							"constant_value": [
+								{
+									"allowed_response_headers":     null,
+									"audit_non_hmac_request_keys":  null,
+									"audit_non_hmac_response_keys": null,
+									"default_lease_ttl":            null,
+									"listing_visibility":           "unauth",
+									"max_lease_ttl":                "90000s",
+									"passthrough_request_headers":  null,
+									"token_type":                   null,
+								},
+							],
+						},
+						"type": {
+							"constant_value": "approle",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example1",
+					"provider_config_key": "vault",
+					"schema_version":      1,
+					"type":                "vault_auth_backend",
+				},
+				{
+					"address": "vault_auth_backend.example2",
+					"expressions": {
+						"tune": {
+							"constant_value": [
+								{
+									"allowed_response_headers":     null,
+									"audit_non_hmac_request_keys":  null,
+									"audit_non_hmac_response_keys": null,
+									"default_lease_ttl":            null,
+									"listing_visibility":           "unauth",
+									"max_lease_ttl":                "90000s",
+									"passthrough_request_headers":  null,
+									"token_type":                   null,
+								},
+							],
+						},
+						"type": {
+							"constant_value": "azure",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example2",
+					"provider_config_key": "vault",
+					"schema_version":      1,
+					"type":                "vault_auth_backend",
+				},
+				{
+					"address": "vault_auth_backend.example3",
+					"expressions": {
+						"tune": {
+							"constant_value": [
+								{
+									"allowed_response_headers":     null,
+									"audit_non_hmac_request_keys":  null,
+									"audit_non_hmac_response_keys": null,
+									"default_lease_ttl":            null,
+									"listing_visibility":           "unauth",
+									"max_lease_ttl":                "90000s",
+									"passthrough_request_headers":  null,
+									"token_type":                   null,
+								},
+							],
+						},
+						"type": {
+							"constant_value": "kubernetes",
+						},
+					},
+					"mode":                "managed",
+					"name":                "example3",
+					"provider_config_key": "vault",
+					"schema_version":      1,
+					"type":                "vault_auth_backend",
+				},
+			],
+		},
+	},
+	"format_version": "1.1",
+	"planned_values": {
+		"root_module": {
+			"resources": [
+				{
+					"address":        "vault_auth_backend.example1",
+					"mode":           "managed",
+					"name":           "example1",
+					"provider_name":  "registry.terraform.io/hashicorp/vault",
+					"schema_version": 1,
+					"sensitive_values": {
+						"tune": [
+							{
+								"allowed_response_headers":     [],
+								"audit_non_hmac_request_keys":  [],
+								"audit_non_hmac_response_keys": [],
+								"passthrough_request_headers":  [],
+							},
+						],
+					},
+					"type": "vault_auth_backend",
+					"values": {
+						"description":     null,
+						"disable_remount": false,
+						"local":           null,
+						"namespace":       null,
+						"path":            "aws",
+						"tune": [
+							{
+								"allowed_response_headers":     [],
+								"audit_non_hmac_request_keys":  [],
+								"audit_non_hmac_response_keys": [],
+								"default_lease_ttl":            "",
+								"listing_visibility":           "unauth",
+								"max_lease_ttl":                "90000s",
+								"passthrough_request_headers":  [],
+								"token_type":                   "",
+							},
+						],
+						"type": "approle",
+					},
+				},
+				{
+					"address":        "vault_auth_backend.example2",
+					"mode":           "managed",
+					"name":           "example2",
+					"provider_name":  "registry.terraform.io/hashicorp/vault",
+					"schema_version": 1,
+					"sensitive_values": {
+						"tune": [
+							{
+								"allowed_response_headers":     [],
+								"audit_non_hmac_request_keys":  [],
+								"audit_non_hmac_response_keys": [],
+								"passthrough_request_headers":  [],
+							},
+						],
+					},
+					"type": "vault_auth_backend",
+					"values": {
+						"description":     null,
+						"disable_remount": false,
+						"local":           null,
+						"namespace":       null,
+						"tune": [
+							{
+								"allowed_response_headers":     [],
+								"audit_non_hmac_request_keys":  [],
+								"audit_non_hmac_response_keys": [],
+								"default_lease_ttl":            "",
+								"listing_visibility":           "unauth",
+								"max_lease_ttl":                "90000s",
+								"passthrough_request_headers":  [],
+								"token_type":                   "",
+							},
+						],
+						"type": "azure",
+					},
+				},
+				{
+					"address":        "vault_auth_backend.example3",
+					"mode":           "managed",
+					"name":           "example3",
+					"provider_name":  "registry.terraform.io/hashicorp/vault",
+					"schema_version": 1,
+					"sensitive_values": {
+						"tune": [
+							{
+								"allowed_response_headers":     [],
+								"audit_non_hmac_request_keys":  [],
+								"audit_non_hmac_response_keys": [],
+								"passthrough_request_headers":  [],
+							},
+						],
+					},
+					"type": "vault_auth_backend",
+					"values": {
+						"description":     null,
+						"disable_remount": false,
+						"local":           null,
+						"namespace":       null,
+						"tune": [
+							{
+								"allowed_response_headers":     [],
+								"audit_non_hmac_request_keys":  [],
+								"audit_non_hmac_response_keys": [],
+								"default_lease_ttl":            "",
+								"listing_visibility":           "unauth",
+								"max_lease_ttl":                "90000s",
+								"passthrough_request_headers":  [],
+								"token_type":                   "",
+							},
+						],
+						"type": "kubernetes",
+					},
+				},
+			],
+		},
+	},
+	"resource_changes": [
+		{
+			"address": "vault_auth_backend.example1",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description":     null,
+					"disable_remount": false,
+					"local":           null,
+					"namespace":       null,
+					"path":            "aws",
+					"tune": [
+						{
+							"allowed_response_headers":     [],
+							"audit_non_hmac_request_keys":  [],
+							"audit_non_hmac_response_keys": [],
+							"default_lease_ttl":            "",
+							"listing_visibility":           "unauth",
+							"max_lease_ttl":                "90000s",
+							"passthrough_request_headers":  [],
+							"token_type":                   "",
+						},
+					],
+					"type": "approle",
+				},
+				"after_sensitive": {
+					"tune": [
+						{
+							"allowed_response_headers":     [],
+							"audit_non_hmac_request_keys":  [],
+							"audit_non_hmac_response_keys": [],
+							"passthrough_request_headers":  [],
+						},
+					],
+				},
+				"after_unknown": {
+					"accessor": true,
+					"id":       true,
+					"tune": [
+						{
+							"allowed_response_headers":     [],
+							"audit_non_hmac_request_keys":  [],
+							"audit_non_hmac_response_keys": [],
+							"passthrough_request_headers":  [],
+						},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example1",
+			"provider_name": "registry.terraform.io/hashicorp/vault",
+			"type":          "vault_auth_backend",
+		},
+		{
+			"address": "vault_auth_backend.example2",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description":     null,
+					"disable_remount": false,
+					"local":           null,
+					"namespace":       null,
+					"tune": [
+						{
+							"allowed_response_headers":     [],
+							"audit_non_hmac_request_keys":  [],
+							"audit_non_hmac_response_keys": [],
+							"default_lease_ttl":            "",
+							"listing_visibility":           "unauth",
+							"max_lease_ttl":                "90000s",
+							"passthrough_request_headers":  [],
+							"token_type":                   "",
+						},
+					],
+					"type": "azure",
+				},
+				"after_sensitive": {
+					"tune": [
+						{
+							"allowed_response_headers":     [],
+							"audit_non_hmac_request_keys":  [],
+							"audit_non_hmac_response_keys": [],
+							"passthrough_request_headers":  [],
+						},
+					],
+				},
+				"after_unknown": {
+					"accessor": true,
+					"id":       true,
+					"path":     true,
+					"tune": [
+						{
+							"allowed_response_headers":     [],
+							"audit_non_hmac_request_keys":  [],
+							"audit_non_hmac_response_keys": [],
+							"passthrough_request_headers":  [],
+						},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example2",
+			"provider_name": "registry.terraform.io/hashicorp/vault",
+			"type":          "vault_auth_backend",
+		},
+		{
+			"address": "vault_auth_backend.example3",
+			"change": {
+				"actions": [
+					"create",
+				],
+				"after": {
+					"description":     null,
+					"disable_remount": false,
+					"local":           null,
+					"namespace":       null,
+					"tune": [
+						{
+							"allowed_response_headers":     [],
+							"audit_non_hmac_request_keys":  [],
+							"audit_non_hmac_response_keys": [],
+							"default_lease_ttl":            "",
+							"listing_visibility":           "unauth",
+							"max_lease_ttl":                "90000s",
+							"passthrough_request_headers":  [],
+							"token_type":                   "",
+						},
+					],
+					"type": "kubernetes",
+				},
+				"after_sensitive": {
+					"tune": [
+						{
+							"allowed_response_headers":     [],
+							"audit_non_hmac_request_keys":  [],
+							"audit_non_hmac_response_keys": [],
+							"passthrough_request_headers":  [],
+						},
+					],
+				},
+				"after_unknown": {
+					"accessor": true,
+					"id":       true,
+					"path":     true,
+					"tune": [
+						{
+							"allowed_response_headers":     [],
+							"audit_non_hmac_request_keys":  [],
+							"audit_non_hmac_response_keys": [],
+							"passthrough_request_headers":  [],
+						},
+					],
+				},
+				"before":           null,
+				"before_sensitive": false,
+			},
+			"mode":          "managed",
+			"name":          "example3",
+			"provider_name": "registry.terraform.io/hashicorp/vault",
+			"type":          "vault_auth_backend",
+		},
+	],
+	"terraform_version": "1.2.7",
+}

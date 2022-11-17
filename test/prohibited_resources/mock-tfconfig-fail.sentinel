@@ -13,34 +13,49 @@ providers = {
 }
 
 resources = {
-	"vault_kv_secret.secret": {
-		"address": "vault_kv_secret.secret",
+	"vault_generic_secret.children": {
+		"address": "vault_generic_secret.children",
 		"config": {
 			"data_json": {
-				"constant_value": null,
+				"references": [
+					"each.key",
+				],
+			},
+			"namespace": {
+				"references": [
+					"vault_mount.children",
+					"each.key",
+				],
 			},
 			"path": {
 				"references": [
-					"vault_mount.kvv1.path",
-					"vault_mount.kvv1",
+					"vault_mount.children",
+					"each.key",
 				],
 			},
 		},
-		"count":               {},
-		"depends_on":          [],
-		"for_each":            {},
+		"count":      {},
+		"depends_on": [],
+		"for_each": {
+			"references": [
+				"local.child_namespaces",
+			],
+		},
 		"mode":                "managed",
 		"module_address":      "",
-		"name":                "secret",
+		"name":                "children",
 		"provider_config_key": "vault",
 		"provisioners":        [],
-		"type":                "vault_kv_secret",
+		"type":                "vault_generic_secret",
 	},
-	"vault_mount.kvv1": {
-		"address": "vault_mount.kvv1",
+	"vault_mount.children": {
+		"address": "vault_mount.children",
 		"config": {
-			"description": {
-				"constant_value": "KV Version 1 secret engine mount",
+			"namespace": {
+				"references": [
+					"vault_namespace.children",
+					"each.key",
+				],
 			},
 			"options": {
 				"constant_value": {
@@ -48,10 +63,60 @@ resources = {
 				},
 			},
 			"path": {
-				"constant_value": "kvv1",
+				"constant_value": "secrets",
 			},
 			"type": {
 				"constant_value": "kv",
+			},
+		},
+		"count":      {},
+		"depends_on": [],
+		"for_each": {
+			"references": [
+				"local.child_namespaces",
+			],
+		},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "children",
+		"provider_config_key": "vault",
+		"provisioners":        [],
+		"type":                "vault_mount",
+	},
+	"vault_namespace.children": {
+		"address": "vault_namespace.children",
+		"config": {
+			"namespace": {
+				"references": [
+					"vault_namespace.parent.path",
+					"vault_namespace.parent",
+				],
+			},
+			"path": {
+				"references": [
+					"each.key",
+				],
+			},
+		},
+		"count":      {},
+		"depends_on": [],
+		"for_each": {
+			"references": [
+				"local.child_namespaces",
+			],
+		},
+		"mode":                "managed",
+		"module_address":      "",
+		"name":                "children",
+		"provider_config_key": "vault",
+		"provisioners":        [],
+		"type":                "vault_namespace",
+	},
+	"vault_namespace.parent": {
+		"address": "vault_namespace.parent",
+		"config": {
+			"path": {
+				"constant_value": "parent",
 			},
 		},
 		"count":               {},
@@ -59,16 +124,27 @@ resources = {
 		"for_each":            {},
 		"mode":                "managed",
 		"module_address":      "",
-		"name":                "kvv1",
+		"name":                "parent",
 		"provider_config_key": "vault",
 		"provisioners":        [],
-		"type":                "vault_mount",
+		"type":                "vault_namespace",
 	},
 }
 
 provisioners = {}
 
-variables = {}
+variables = {
+	"child_namespaces": {
+		"default": [
+			"child_0",
+			"child_1",
+			"child_2",
+		],
+		"description":    "",
+		"module_address": "",
+		"name":           "child_namespaces",
+	},
+}
 
 outputs = {}
 
