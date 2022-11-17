@@ -1,0 +1,35 @@
+# This policy uses the Sentinel tfplan/v2 import to limit the 
+# duration of a default_lease_ttl_seconds and max_lease_ttl_seconds
+
+# Import tfplan-functions.sentinel with alias "plan"
+import "tfplan-functions" as plan
+import "tfplan/v2" as tfplan
+
+
+# Get vault_jwt_auth_backend_role
+
+allRoles = filter tfplan.resource_changes as _, resource_changes {
+    resource_changes.mode is "managed" and
+        resource_changes.type is "vault_jwt_auth_backend_role" and
+            (resource_changes.change.actions contains "create" or
+            resource_changes.change.actions is ["update"] or
+            (resource_changes.change.actions is ["no-op"] and
+                resource_changes.change.after is not null))  
+                      }
+
+#print (allRoles)
+
+boundSubExists =  all allRoles as _, roles {
+   roles.change.after.bound_subject is not null
+      }
+
+boundClaimsExists =  all allRoles as _, roles {
+   roles.change.after.bound_claims is not null
+      }
+
+
+# Control 9 - Requires bound_subject or bound_claims be set
+main = rule {
+  boundSubExists or boundClaimsExists
+}
+
